@@ -1,0 +1,12 @@
+<%= form_for @event do |f| %>
+  <div class="form-group">
+    <label>Event Name</label>
+    <%= f.select :name, [["Birthday Party", "Birthday Party"], ["Meeting", "Meeting"], ["Music Event", "Music Event"]], id: "name", prompt: "Select event name", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label>Event Capacity</label>
+    <%= f.select :capacity, [["10", 10], ["20", 20], ["30", 30], ["40", 40], ["50+", 50]], prompt: "Select number of people", class: "form-control" %>
+  </div>
+
+
+<% end %>

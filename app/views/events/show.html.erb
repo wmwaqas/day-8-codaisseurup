@@ -10,7 +10,7 @@
     <h4>Main Info</h4>
     <p>Event Type: <%= @event.name %></p>
     <p><%= @event.capacity %> <%= @event.capacity > 1 ? "Guests" : "Guest" %></p>
-    
+
 
     <!-- About -->
     <h4>About</h4>
@@ -23,6 +23,11 @@
       <li><%= !@event.includes_drinks ? ("<del>Drinks</del>").html_safe : "Drinks" %></li>
 
     </ul>
+    <!-- Categories -->
+    <h4>Categories</h4>
+    <% @categories.each do |category| %>
+    <span class="label label-success"><%= category.name %></span>
+    <% end %>
 
   </div>
 

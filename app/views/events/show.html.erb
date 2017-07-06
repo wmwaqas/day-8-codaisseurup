@@ -22,6 +22,12 @@
       <li><%= !@event.includes_food ? ("<s>Food</s>").html_safe : "Food" %></li>
       <li><%= !@event.includes_drinks ? ("<del>Drinks</del>").html_safe : "Drinks" %></li>
 
+    <!-- Photos -->
+    <h4>Photos</h4>
+    <% @event.photos.each do |photo| %>
+      <%= image_tag photo.image %>
+    <% end %>
+
     </ul>
     <!-- Categories -->
     <h4>Categories</h4>

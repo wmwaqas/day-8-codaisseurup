@@ -12,7 +12,7 @@ class Event < ApplicationRecord
     #errors.add :ends_at, "must be after starts_at"
   #end
 #end
-def event_price?
+def bargain?
     price < 30
   end
 end

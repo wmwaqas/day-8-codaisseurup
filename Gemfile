@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Happy Uploading
 gem 'carrierwave', '0.11.2'
-
+# Have to store them somewhere (cloudinary)
+gem 'cloudinary', '1.2.3'
 
 gem 'rails_12factor', group: :production
 # Use Capistrano for deployment

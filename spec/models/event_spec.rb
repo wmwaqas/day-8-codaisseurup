@@ -27,4 +27,13 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_length_of(:description).is_at_most(500) }
   end
+  describe "#event_price?" do
+    let(:bargain_event) { create :event, price: 20 }
+    let(:non_bargain_event) { create :event, price: 200 }
+
+    it "returns true if the price is smaller than 30 EUR" do
+      expect(bargain_event.bargain?).to eq(true)
+      expect(non_bargain_event.bargain?).to eq(false)
+    end
+  end
 end

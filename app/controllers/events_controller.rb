@@ -20,10 +20,10 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
 
     if @event.save
-      #redirect_to @event, notice: "Event created"
       image_params.each do |image|
       @event.photos.create(image: image)
     end
+
     redirect_to edit_event_path(@event), notice: "Event successfully created"
     else
       render :new
@@ -40,13 +40,11 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      #redirect_to @event, notice: "Event updated"
-      if @event.update(event_params)
     image_params.each do |image|
       @event.photos.create(image: image)
     end
 
-    redirect_to edit_room_path(@event), notice: "Event successfully updated"
+    redirect_to edit_event_path(@event), notice: "Event successfully updated"
     else
       render :edit
     end

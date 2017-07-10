@@ -1,22 +1,23 @@
 Photo.destroy_all
 Profile.destroy_all
+Registration.destroy_all
 Category.destroy_all
 Event.destroy_all
 User.destroy_all
 
 
 # Categories
-category_1 = Category.create(name: "Birthday Party")
-category_2 = Category.create(name: "Meeting")
-category_3 = Category.create(name: "Conference")
-category_4 = Category.create(name: "Music Concert")
+category_1 = Category.create!(name: "Birthday Party")
+category_2 = Category.create!(name: "Meeting")
+category_3 = Category.create!(name: "Conference")
+category_4 = Category.create!(name: "Music Concert")
 
 # Users
-user_1 = User.create(email: "waqas@codaisseurup.com", password: "abcd1234")
-user_2 = User.create(email: "boris@codaisseurup.com", password: "abcd1234")
+user_1 = User.create!(email: "waqas@codaisseurup.com", password: "abcd1234")
+user_2 = User.create!(email: "boris@codaisseurup.com", password: "abcd1234")
 
 # Events
-event_1 = Event.create(
+event_1 = Event.create!(
 name:"Birthday Party",
 description: "Birthday Party at Codaisseur",
 location: "Codaisseur",
@@ -30,7 +31,7 @@ active: true,
 user: user_1,
 categories: [category_1])
 
-event_2 = Event.create(
+event_2 = Event.create!(
 name:"Meeting",
 description: "Meeting at Codaisseur",
 location: "Codaisseur",
@@ -53,7 +54,10 @@ photo4 = Photo.create!(remote_image_url: "http://res.cloudinary.com/waqas/image/
 photo5 = Photo.create!(remote_image_url: "http://res.cloudinary.com/waqas/image/upload/v1499347021/meeting-2_yurhlk.png", event: event_2)
 photo6 = Photo.create!(remote_image_url: "http://res.cloudinary.com/waqas/image/upload/v1499347015/meeting-1_suq1ra.jpg", event: event_2)
 
+## bookings
 
+Registration.create!(user: user_1, event: event_1,  status: "Registering for birthday", price: 15, guests_count: 2)
+Registration.create!(user: user_2, event: event_2,  status: "Registration for meeting", price: 20, guests_count: 2)
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).

@@ -20,7 +20,7 @@ class Api::EventsController < ApplicationController
 
     if event.save
       render status: 201, json: {
-        message: "Event successfully created",
+        message: "Event created",
         event: event
       }.to_json
     else
@@ -38,6 +38,22 @@ class Api::EventsController < ApplicationController
       message: "Event deleted"
     }.to_json
   end
+
+  def update
+    event = Event.find(params[:id])
+    if event.update(event_params)
+      render status: 200, json: {
+        message: "Event updated",
+        event: event
+      }.to_json
+    else
+       render status: 422, json: {
+        message: "The event could not be updated",
+        errors: event.errors
+      }.to_json
+    end
+  end
+
 
 
   private

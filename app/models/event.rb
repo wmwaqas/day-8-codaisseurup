@@ -1,12 +1,12 @@
 class Event < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   has_and_belongs_to_many :categories
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :guests, through: :registrations, source: :user
   validates :name, presence: true
   validates :description, presence: true, length: { maximum: 500 }
-
+end
   #validate :ends_at_after_starts_at?
 
 #maybe I should make it a class method e.g. self.ends_at_after_starts_at
@@ -18,7 +18,6 @@ class Event < ApplicationRecord
 #new method
 
 
-def bargain?
-    price < 30
-  end
-end
+#def bargain?
+    #price < 30
+  #end
